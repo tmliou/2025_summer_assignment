@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubik's Cube</title>
+    <link rel="stylesheet" href="rubiks_cube.css">
+    <style>
+        body { margin: 0; overflow: hidden; }
+        canvas { display: block; }
+        #controls {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+            font-family: monospace;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .control-button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .control-button:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <!-- Buttons will be added dynamically by JavaScript -->
+        <p>Use keyboard (U, D, L, R, F, B, X, Y, Z) or buttons:</p>
+    </div>
+    <script type="module" src="rubiks_cube.js"></script>
+</body>
+</html>

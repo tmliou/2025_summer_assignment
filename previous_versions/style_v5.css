@@ -1,0 +1,41 @@
+body {
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.game-container {
+    display: flex;
+    border: 1px solid #000;
+}
+
+canvas {
+    background-color: #fff;
+}
+
+.stats-display {
+    width: 200px;
+    padding: 10px;
+    background-color: #eee;
+    border-left: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.stat-object-color {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    margin-right: 5px;
+}

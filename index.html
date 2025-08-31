@@ -1,19 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gemini-Man</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+  margin: 0;
+}
+
+.sidebar {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+
+.dropdown-container a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+
+.dropdown-container a:hover {
+  color: #f1f1f1;
+}
+
+.dropdown-container a.active {
+  color: white;
+  background-color: #4CAF50;
+}
+
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  padding: 0px;
+}
+
+.game-iframe {
+    width: 100%;
+    height: 100vh;
+    border: none;
+}
+
+.dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.dropdown-container {
+  display: block;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+.info-container {
+    color: #818181;
+    padding: 16px;
+    margin-top: 32px;
+}
+
+.info-item {
+    margin-bottom: 16px;
+}
+
+.info-item h3 {
+    font-size: 14px;
+    margin-top: 0;
+}
+
+.info-item p {
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+.info-item a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-size: 12px;
+    display: inline;
+}
+
+</style>
 </head>
 <body>
-    <h1>Gemini-Man</h1>
-    <div class="game-container">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="statsDisplay" class="stats-display">
-            <h2>Collected Objects</h2>
-        </div>
+
+<div class="sidebar">
+  <button class="dropdown-btn">Final Versions</button>
+  <div class="dropdown-container">
+    <a href="#" onclick="changeVersion('index_final_v0.html', this)">Version 0</a>
+    <a href="#" onclick="changeVersion('index_final_v1.html', this)">Version 1</a>
+    <a href="#" onclick="changeVersion('index_final_v2.html', this)">Version 2</a>
+    <a href="#" onclick="changeVersion('index_final_v3.html', this)">Version 3</a>
+    <a href="#" onclick="changeVersion('index_final_v4.html', this)">Version 4</a>
+    <a href="#" onclick="changeVersion('index_final_v5.html', this)">Version 5</a>
+    <a href="#" onclick="changeVersion('index_final_v6.html', this)" class="active">Version 6</a>
+  </div>
+  <div class="info-container">
+    <div class="info-item">
+        <h3>How to Play</h3>
+        <p>按空白鍵讓角色跳動，按左右鍵移動角色。</p>
     </div>
-    <script src="script.js"></script>
+    <div class="info-item">
+        <h3>License Note</h3>
+        <p>The Rubik's cube game is based on <a href="https://github.com/joews/rubik-js" target="_blank">rubik-js</a> by joews, used under the MIT License.</p>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <iframe id="game-iframe" class="game-iframe" src="index_final_v6.html"></iframe>
+</div>
+
+<script>
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+
+var activeElement = document.querySelector(".sidebar .active");
+
+function changeVersion(versionUrl, elem) {
+    document.getElementById('game-iframe').src = versionUrl;
+    if (activeElement) {
+        activeElement.classList.remove("active");
+    }
+    elem.classList.add("active");
+    activeElement = elem;
+}
+</script>
+
 </body>
 </html>
